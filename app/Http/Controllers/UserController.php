@@ -27,9 +27,11 @@ class UserController extends Controller
         auth()->user()->update($request->only('name','gender'));
         if($request->hasFile('profile_picture'))
         {
+            //Storing Image to local disk
             $extension = $request->file('profile_picture')->getClientOriginalExtension();
             $completeFileName = str_replace(" ","_",strtolower(auth()->user()->name)).".".$extension;
             $path = $request->file('profile_picture')->storeAs('/user/profile',$completeFileName);
+
             auth()->user()->update(['profile_picture'=>$path]);
         }
         return redirect()->route('user.home');
