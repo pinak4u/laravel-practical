@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="laravel_practical@localhost" uuid="326d3b2d-ca4c-42f8-b6a2-c5180b17d720">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/laravel_practical</jdbc-url>
+      <driver-properties>
+        <property name="serverTimezone" value="Asia/Kolkata" />
+      </driver-properties>
+    </data-source>
+  </component>
+</project>
