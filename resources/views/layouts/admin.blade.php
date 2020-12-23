@@ -29,11 +29,9 @@
                 <a  class="ml-5 mr-3" href="{{ route('posts.index') }}">
                     Posts
                 </a>
-                @role('admin')
                 <a  class="mr-3" href="{{ route('users.index') }}">
                     Users
                 </a>
-                @endrole
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

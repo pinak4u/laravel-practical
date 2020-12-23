@@ -1,4 +1,5 @@
-@extends('layouts.admin')
+@php $layout = auth()->user()->id == 1 ? 'layouts.admin':  'layouts.user' @endphp
+@extends($layout)
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
