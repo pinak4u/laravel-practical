@@ -10,6 +10,8 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('ownerCheck')->only(['show','edit','update','delete']);
+        $this->middleware('postCreationPermission')->only(['create','store']);
     }
 
     /**
@@ -20,10 +22,10 @@ class PostController extends Controller
     public function index()
     {
         if(auth()->user()->hasRole('Admin')){
-          $posts = Post::all();
+          $posts = Post::paginate(15);
         }else
         {
-        $posts = auth()->user()->posts;
+        $posts = auth()->user()->posts()->paginate(15);
         }
         return view('post.index',compact('posts'));
     }

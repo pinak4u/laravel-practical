@@ -20,15 +20,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['prefix'=>'/user','middleware'=>['auth','statusCheck']],function(){
-    Route::get('/home','UserController@index')->name('user.home');
+    Route::get('/home','PostController@index')->name('user.home');
     Route::get('/profile','UserController@profile')->name('user.profile');
     Route::patch('/profile/{user}','UserController@updateProfile')->name('user.profile.update');
 });
 
 Route::group(['prefix'=>'admin','middleware'=>['auth', 'admin']],function(){
     Route::get('/home','AdminController@index')->name('admin.home');
+    Route::resource('users','UserController');
 });
 
 Route::resource('posts','PostController');
-Route::resource('users','UserController');
 

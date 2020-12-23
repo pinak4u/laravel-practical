@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
@@ -59,6 +60,8 @@ class UserController extends Controller
            'gender'=> $request->input('gender'),
            'status'=> $request->input('status')
         ]);
+        //Assigning default role,
+        $user->assignRole('user');
         session()->flash('success','User Created Successfully');
         return redirect()->route('users.index');
     }
@@ -120,6 +123,7 @@ class UserController extends Controller
 
             $user->update(['profile_picture'=>$path]);
         }
+        $user->syncPermissions($request->input('permissions'));
         session()->flash('success','User Updated Successfully');
         return redirect()->route('users.index');
     }
