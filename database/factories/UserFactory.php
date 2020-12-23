@@ -25,7 +25,7 @@ $factory->define(User::class, function (Faker $faker) {
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
         'gender'=>$faker->randomElement(['male','female']),
-        'profile_picture'=>$faker->imageUrl(150,150,null,true,null,true),
+        'profile_picture'=>'https://source.unsplash.com/random/150x150',
         'status'=>'active',
     ];
 });
