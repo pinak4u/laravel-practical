@@ -3,12 +3,14 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\SoftDeletes;
 class User extends Authenticatable
 {
-    use Notifiable;  use HasRoles;
+    use Notifiable;  use HasRoles; use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -40,6 +42,11 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany('App\Post','user_id');
+    }
+
+    public function scopeAllusers(Builder $builder)
+    {
+        return $builder->where('id','!=',1);
     }
 }
 

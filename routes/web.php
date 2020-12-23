@@ -30,4 +30,5 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'admin']],function(){
 });
 
 Route::resource('posts','PostController');
+Route::resource('users','UserController');
 
